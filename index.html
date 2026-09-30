@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sengunthar Engineering College – Quiz Registration</title>
+  <meta name="description" content="Register now for the Quiz at Sengunthar Engineering College. Fill in your name, college, phone number, and email.">
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans for modern, crisp college typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-container">
+    
+    <!-- Main Registration Card -->
+    <main class="card" id="registrationCard">
+      
+      <!-- Card Header with SEC Official College Logo -->
+      <header class="card-header">
+        <div class="college-badge-logo" title="Sengunthar Engineering College">
+          <img src="sec_logo.png" alt="Sengunthar Engineering College Logo" class="sec-logo-img">
+        </div>
+        <h1 class="college-title">Sengunthar Engineering College</h1>
+        <h2 class="quiz-title">Quiz Registration</h2>
+        <p class="quiz-subtitle">Register now to participate in the quiz</p>
+      </header>
+
+      <!-- Alert / Status Notifications -->
+      <div id="statusMessage" class="status-message" role="alert" aria-live="polite" style="display: none;">
+        <div class="status-icon" id="statusIcon"></div>
+        <div class="status-content">
+          <strong id="statusTitle"></strong>
+          <span id="statusText"></span>
+        </div>
+      </div>
+
+      <!-- Registration Form View -->
+      <form id="quizRegistrationForm" novalidate>
+        
+        <!-- Field 1: Name -->
+        <div class="form-group" id="group-name">
+          <label for="name" class="form-label">
+            Name <span class="required-star">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="form-input" 
+              placeholder="Enter your full name" 
+              autocomplete="name"
+              required
+            >
+          </div>
+          <p class="error-text" id="error-name"></p>
+        </div>
+
+        <!-- Field 2: College Name -->
+        <div class="form-group" id="group-college">
+          <label for="collegeName" class="form-label">
+            College Name <span class="required-star">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="collegeName" 
+              name="college_name" 
+              class="form-input" 
+              placeholder="Enter your college name" 
+              autocomplete="organization"
+              required
+            >
+          </div>
+          <p class="error-text" id="error-college"></p>
+        </div>
+
+        <!-- Field 3: Phone No -->
+        <div class="form-group" id="group-phone">
+          <label for="phoneNo" class="form-label">
+            Phone No <span class="required-star">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="tel" 
+              id="phoneNo" 
+              name="phone_no" 
+              class="form-input" 
+              placeholder="Enter 10-digit mobile number" 
+              maxlength="10"
+              autocomplete="tel"
+              required
+            >
+          </div>
+          <p class="error-text" id="error-phone"></p>
+        </div>
+
+        <!-- Field 4: Gmail -->
+        <div class="form-group" id="group-gmail">
+          <label for="gmail" class="form-label">
+            Gmail <span class="required-star">*</span>
+          </label>
+          <div class="input-wrapper">
+            <input 
+              type="email" 
+              id="gmail" 
+              name="gmail" 
+              class="form-input" 
+              placeholder="example@gmail.com" 
+              autocomplete="email"
+              required
+            >
+          </div>
+          <p class="error-text" id="error-gmail"></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="btn-submit">
+          <span class="btn-text">Register</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+
+      </form>
+
+      <!-- ================= SUCCESS CONFIRMATION VIEW ================= -->
+      <div id="successView" class="success-view" style="display: none;">
+        <div class="success-icon-wrapper">
+          <div class="success-check-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="pulse-ring"></div>
+        </div>
+
+        <h3 class="success-headline">Registration Successful!</h3>
+        <p class="success-desc">Your registration for the Sengunthar Engineering College Quiz has been recorded successfully.</p>
+
+        <!-- Participant Summary Card -->
+        <div class="summary-card">
+          <div class="summary-header">
+            <span>Participant Receipt</span>
+            <span class="badge-status">CONFIRMED</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Name</span>
+            <strong class="summary-value" id="receiptName">-</strong>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">College</span>
+            <span class="summary-value" id="receiptCollege">-</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Phone No</span>
+            <span class="summary-value" id="receiptPhone">-</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Gmail</span>
+            <span class="summary-value" id="receiptGmail">-</span>
+          </div>
+        </div>
+
+        <button type="button" id="registerAnotherBtn" class="btn-submit btn-secondary-action">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Register Another Participant</span>
+        </button>
+      </div>
+
+      <!-- Footer / Note -->
+      <footer class="card-footer">
+        <p>© Sengunthar Engineering College • Quiz Portal</p>
+        <p style="margin-top: 6px;">
+          <a href="admin.html" class="admin-link" title="Admin Control Center">🔐 Admin Portal</a>
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
